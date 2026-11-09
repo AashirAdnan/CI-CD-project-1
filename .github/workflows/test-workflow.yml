@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: ENV_SECRET
     steps:
-      - name:
+      - name: env secret
         env:
           MY_ENV_SECRET: ${{secrets.MY_ENV_SECRET}}
         run: |
