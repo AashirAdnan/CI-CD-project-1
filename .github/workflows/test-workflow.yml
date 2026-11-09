@@ -52,4 +52,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: repo variable
+        env:
+          MY_REPO_VAR: ${{vars.APP_NAME}}
         run: echo "${{vars.APP_NAME}}"
