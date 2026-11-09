@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  test:
+  repo-secrets:
     runs-on: ubuntu-latest
     env:
       MY_SECRET: ${{secrets.MY_REPO_SECRET}}
@@ -28,7 +28,7 @@ jobs:
             echo "the string is not empty"
           fi
 
-  env-test:
+  env-secrets:
     runs-on: ubuntu-latest
     environment: ENV_SECRET
     steps:
@@ -42,3 +42,9 @@ jobs:
             echo "secret not found"
             exit 1
           fi
+
+  repo_vars:
+    runs-on: ubuntu-latest
+    steps:
+      - name: repo variable
+        run: echo "${{vars.APP_NAME}}"
