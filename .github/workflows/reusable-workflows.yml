@@ -9,7 +9,7 @@ on:
 
 jobs:
   greet:
-    runs-on: ubunut-latest
+    runs-on: ubuntu-latest
     steps:
       - name: greets user
         run: echo "hello ${{inputs.username}}"
