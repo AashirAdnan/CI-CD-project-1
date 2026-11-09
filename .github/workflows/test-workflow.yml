@@ -13,7 +13,7 @@ jobs:
         env:
           MY_SECRET: ${{ secrets.MY_REPO_SECRET }}
         run: |
-          if [ -n $MY_SECRET ]; then
+          if [ -n "$MY_SECRET" ]; then
             echo "the secret exists"
 
           else
