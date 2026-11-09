@@ -6,17 +6,25 @@ on:
       - main
 
 jobs:
-  test-secret:
+  test:
     runs-on: ubuntu-latest
+    env:
+      MY_SECRET: ${{secrets.MY_SECRET_DOESNOT_EXIST}}
     steps:
-      - name: test secret
-        env:
-          MY_SECRET: ${{ secrets.MY_REPO_SECRET }}
+      - name: this is a test
         run: |
           if [ -n "$MY_SECRET" ]; then
-            echo "the secret exists"
-
+            echo "secret exists"
           else
-            echo "the secret does not exist"
+            echo "secret doesnt exist"
+            exit 1
+          fi
+
+      - name: this is another test
+        run: |
+          if [ -z "$MY_SECRET" ]; then
+            echo "the string is empty"
+          else
+            echo "the string is not empty"
             exit 1
           fi
