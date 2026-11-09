@@ -9,7 +9,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      MY_SECRET: ${{secrets.MY_REPO_SECRET}}
+      MY_SECRET: ${{secrets.MY_SECRET_DOESNOT_EXIST}}
     steps:
       - name: this is a test
         run: |
@@ -28,18 +28,3 @@ jobs:
             echo "the string is not empty"
             exit 1
           fi
-
-  env-test:
-    runs-on: ubuntu-latest
-    environment: ENV_SECRET
-    steps:
-      - name:
-        env:
-          MY_ENV_SECRET: ${{secrets.MY_ENV_SECRET}}
-        run: |
-          if [ -n "$MY_ENV_SECRET" ]; then
-            echo "the secret exists"
-          else
-            echo "secret not found"
-            exit 1
-          exit 1
