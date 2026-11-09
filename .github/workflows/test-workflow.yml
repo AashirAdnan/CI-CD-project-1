@@ -28,7 +28,7 @@ jobs:
             echo "the string is not empty"
           fi
 
-  env-secrets:
+  env-secrets-vars:
     runs-on: ubuntu-latest
     environment: ENV_SECRET
     steps:
@@ -42,6 +42,11 @@ jobs:
             echo "secret not found"
             exit 1
           fi
+
+      - name: env vars
+        env:
+          MY_ENV_VAR: ${{vars.APP_PORT}}
+        run: echo "this applications port is $MY_ENV_VAR"
 
   repo_vars:
     runs-on: ubuntu-latest
