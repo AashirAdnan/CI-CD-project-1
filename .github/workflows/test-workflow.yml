@@ -56,3 +56,8 @@ jobs:
         env:
           MY_REPO_VAR: ${{vars.APP_NAME}}
         run: echo "${{vars.APP_NAME}}"
+
+  greet:
+    uses: ./.github/workflows/reusable-workflows.yml
+    with:
+      username: "ali"

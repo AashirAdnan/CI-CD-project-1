@@ -1,0 +1,15 @@
+name: reusable workflow
+
+on:
+  workflow_call:
+    inputs:
+      username:
+        required: true
+        type: string
+
+jobs:
+  greet:
+    runs-on: ubunut-latest
+    steps:
+      - name: greets user
+        run: echo "hello ${{inputs.username}}"
