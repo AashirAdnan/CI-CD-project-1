@@ -1,0 +1,19 @@
+name: job outputs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    outputs:
+      myvalue: ${{steps.step1.outputs.myvalue}}
+    steps:
+      - id: step1
+        run: echo "myvalue=123" >> "$GITHUB_OUTPUT"
+
+  read:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - run: echo ${{needs.test.outputs.myvalue}}
